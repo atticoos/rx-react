@@ -7,6 +7,7 @@ module.exports = {
     path: __dirname,
     filanem: 'bundle.js'
   },
+  devtool: 'source-map',
   module: {
     loaders: [
       {
@@ -14,7 +15,8 @@ module.exports = {
         loader: 'babel-loader',
         exclude: /node_modules/,
         query: {
-          presets: ['es2015', 'react']
+          presets: ['es2015', 'react'],
+          plugins: ['transform-class-properties']
         }
       }
     ]
