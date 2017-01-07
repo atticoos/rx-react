@@ -2,8 +2,8 @@ import React from 'react';
 import ReactDom from 'react-dom';
 import StoreProvider from './store/provider';
 import TodoList from './containers/list';
-import createTodoStore from './store/todos';
-const {actions, store} = createTodoStore();
+import createStore from './store';
+const {actions, store} = createStore();
 
 class App extends React.Component {
   render () {

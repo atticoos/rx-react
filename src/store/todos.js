@@ -22,7 +22,7 @@ function createActions (addSubject, removeSubject) {
 /**
  * The Todo List store
  */
-export default function createTodoStore () {
+export default function createTodoStore (initialState = []) {
   // Observable action subjects
   const addSubject = new Subject();
   const removeSubject = new Subject();
@@ -39,12 +39,8 @@ export default function createTodoStore () {
 
   // Observable store
   const store = Observable.merge(addIntent, removeIntent)
-    .scan((state, reducer) => reducer(state), [])
-    .map(todos => ({todos}))
-    .startWith({todos: []});
+    .scan((state, reducer) => reducer(state), initialState)
+    .startWith(initialState);
 
-  return {
-    actions,
-    store
-  };
+  return {actions, store};
 }

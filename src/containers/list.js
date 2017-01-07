@@ -1,13 +1,23 @@
 import React from 'react';
-import {Button} from 'react-bootstrap';
+import {Button, FormControl} from 'react-bootstrap';
 import {createConnector} from '../store/provider';
 
 class TodoListContainer extends React.Component {
   render () {
     return (
       <div>
+        {/* Create a new Todo item */}
+        <FormControl
+          type="text"
+          value={this.props.newTodo}
+          onChange={e => this.props.newTodoActions.updateText(e.target.value)}
+        />
+
         {/* Add an item to the Todo List store */}
-        <Button onClick={() => this.props.add('foo')}>
+        <Button onClick={() => {
+          this.props.todoActions.add(this.props.newTodo)
+          this.props.newTodoActions.clearText();
+        }}>
           Add Todo
         </Button>
 
@@ -21,12 +31,13 @@ class TodoListContainer extends React.Component {
 }
 
 const selector = state => ({
-  todos: state.todos
+  todos: state.todos,
+  newTodo: state.newTodo
 });
 
-const actions = todoActions => ({
-  add: todoActions.add,
-  remove: todoActions.remove
+const actions = storeActions => ({
+  todoActions: storeActions.todos,
+  newTodoActions: storeActions.newTodo
 });
 
 const connect = createConnector(selector, actions);

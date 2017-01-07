@@ -16,7 +16,11 @@ module.exports = {
         exclude: /node_modules/,
         query: {
           presets: ['es2015', 'react'],
-          plugins: ['transform-class-properties']
+          plugins: [
+            'transform-class-properties',
+            'syntax-object-rest-spread',
+            'transform-object-rest-spread'
+          ]
         }
       }
     ]
