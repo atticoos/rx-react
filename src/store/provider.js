@@ -1,5 +1,4 @@
 import React from 'react';
-import createTodoStore from './todos';
 
 // Provides the Store to a Connected Container
 export default class StoreProvider extends React.Component {

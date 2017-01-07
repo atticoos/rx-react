@@ -40,9 +40,7 @@ export default function createTodoStore () {
   // Observable store
   const store = Observable.merge(addIntent, removeIntent)
     .scan((state, reducer) => reducer(state), [])
-    .map(nextState => ({
-      todos: nextState
-    }))
+    .map(todos => ({todos}))
     .startWith({todos: []});
 
   return {
