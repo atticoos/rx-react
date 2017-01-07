@@ -1,6 +1,6 @@
 import {Observable} from 'rx/dist/rx.all';
-import createTodoStore from './todos';
-import createNewTodoStore from './newTodo';
+import createTodoStore from './reducers/todos';
+import createNewTodoStore from './reducers/newTodo';
 
 export default function createStore () {
   const todos = createTodoStore();
